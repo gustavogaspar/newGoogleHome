@@ -1,0 +1,17 @@
+{
+  "name": "newgooglewebhook",
+  "version": "1.0.0",
+  "description": "newer version of google home integration",
+  "main": "service.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node index.js"
+  },
+  "author": "@gustavogaspar",
+  "license": "MIT",
+  "dependencies": {
+    "actions-on-google": "^2.6.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
