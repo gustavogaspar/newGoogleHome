@@ -2,12 +2,12 @@ const { dialogflow } = require('actions-on-google');
 const bodyParser = require('body-parser');
 const app = dialogflow();
 
-module.exports = (serverConfig) => {
+module.exports = (serviceConfig) => {
 
 app.intent('Default Fallback Intent',conv =>{
     conv.ask('Funcionou');
 });
 
-serverConfig.use('bot/action',bodyParser.json(),app);
-serverConfig.post('bot/action',app);
+serviceConfig.use('bot/action',bodyParser.json(),app);
+serviceConfig.post('bot/action',app);
 }
