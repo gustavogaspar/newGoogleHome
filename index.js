@@ -1,12 +1,16 @@
 const express = require('express')
-const service = require('./service')
-const logger = console
-const serverConfig = express()
+const bodyParser = require('body-parser')
+const {dialogflow} = require('actions-on-google')
+  
 
-service(serverConfig)
+const app = dialogflow()
 
-const server = serverConfig.listen(process.env.PORT || 3000, () => {
-  logger.info('serviço online');
-});
+app.intent('Default Fallback Intent', conv => {
+    conv.ask('testando')
+  })
 
-module.exports = server;
+const expressApp = express().use(bodyParser.json())
+
+expressApp.post('/fulfillment', app)
+
+expressApp.listen(3000)
