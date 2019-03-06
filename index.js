@@ -1,11 +1,13 @@
-const express = require('express')
-const service = require('./service')
-const serviceConfig = express()
+const express = require('express');
+const service = require('./service');
+const pkg = require('./package.json');
+const logger = console;
+const app = express();
 
-service(serviceConfig)
+service(app);
 
-const server = serviceConfig.listen(process.env.PORT || 3000, () => {
-  console.log('Service online\n')
+const server = app.listen(process.env.PORT || 3000, () => {
+  logger.info(`${pkg.name} service online\n`);
 });
 
-module.exports = server
+module.exports = server;
